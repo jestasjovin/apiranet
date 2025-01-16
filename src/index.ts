@@ -1,6 +1,6 @@
 import express, { Request, Response, NextFunction } from "express";
 import dotenv from "dotenv";
-import mainRouter from "./routes/v1/main/indexRoutes";
+import mainRouter from "./routes/v1/main";
 import clientRoutes from "./routes/v1/api/client/routes";
 import operateRoutes from "./routes/v1/api/operate/routes";
 const port: number = Number(process.env.PORT) || 3000;
