@@ -4,7 +4,7 @@ import { IApiUser } from "../types/model.types";
 // Users schema
 const apiUserSchema = new Schema<IApiUser>(
   {
-    name: { type: String, required: true },
+    name: { type: String, required: true ,unique:true },
     services: [{ type: Schema.Types.ObjectId, ref: "Service" }],
   },
   {
