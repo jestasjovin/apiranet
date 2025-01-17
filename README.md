@@ -25,6 +25,16 @@ This is a node js server built with typescript and express
 
 Currently : its an MVP , trying to actualy make it work or atleast make some sense!
 
+#### Goals
+  - Register a user who will register their APIs
+  - User Being able to register services : i.e  APIs
+  - Find specific API
+  - Find multiple api that does something 
+    : filter based  on the user's needs from parent api call
+  - Map the node journey : with least cost 
+  - start going through to call each api
+
+
 ### Run : Development Mode
 
 ```bash
