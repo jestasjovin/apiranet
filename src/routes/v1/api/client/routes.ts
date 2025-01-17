@@ -25,4 +25,11 @@ registerRouter.post("/register", authenticate, clientController.registerClient);
 // Mount the registerRouter on `/register` path
 clientRouter.use("/register", registerRouter);
 
+
+// :::::::::::::: route for service register
+
+// :::::::::::::: service get items
+
+// :::::::::::::: adding provider
+
 export default clientRouter;
