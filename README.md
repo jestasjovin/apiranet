@@ -23,7 +23,7 @@ This is a node js server built with typescript and express
     - dev dependecies
         * nodemon
 
-
+Currently : its an MVP , trying to actualy make it work or atleast make some sense!
 
 ### Run : Development Mode
 
