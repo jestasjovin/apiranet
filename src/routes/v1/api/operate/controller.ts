@@ -10,9 +10,14 @@ export const operateService = async (
     const service = new RatNet("user001", { someKey: "xx" }, {});
 
     // Extracting parameters from the request body
-    const { input } = req.body;
+    const { serviceId,serviceType,metadata } = req.body;
 
-    const values = { serviceId: "", serviceType: "", metadata: "" };
+    const values = { serviceId: serviceId, serviceType: serviceType, metadata:{
+      userId:metadata.userId,
+      platformId: metadata.platformId,
+      serviceId: metadata.serviceId,
+      data: serviceType.data,
+    }};
 
     // using the service to operate the input
     const result = await service.operate(values);
