@@ -1,4 +1,5 @@
-import { QueryResult, Node } from "../types/types";
+import {  Node } from "../types/app.types";
+import { QueryResult, UserInput } from "../types/userInteractions.types";
 
 class RatNet {
   private userId: string;
@@ -14,30 +15,42 @@ class RatNet {
   async operate(input: {
     serviceId: string;
     serviceType: string;
-    metadata: any;
+    metadata: UserInput;
   }): Promise<QueryResult> {
     try {
       const { serviceId, serviceType, metadata } = input;
 
       // Services are stored as nodes of procedure and required data|in:out
-      // get the service node{object} and its details such as api and metadata
-      console.log(
-        await this.getClientServices(serviceId, serviceType, metadata)
-      );
 
-      // check what i have: and what i'm missing from the current request
+      //get the service id
 
-      // iterate to check for that service what am i missing ....
+      //check input requiirements
+      //if input requirements fails :::
+      // grab the needed requirements
+      // identify the services that offer the requiremnts
       //  and what services i have subscribed
-      //   ::::: fetch services i can just use,
-      //  even if user didn't subscribe
-      // | the service is as third party provider
-      //  if not can we bypass the requirements
-      // return to parent call and  give the needed paremeters | requrement data
+      //should be the smallest or easiest....
+      //i can map several and choose one with minimum requirements missing
 
-      //if everything is on there ....run the intended operation
+      //structure the graph now  that we will traverse
 
-      return { id: "", data: "" };
+      //lets start traversing
+      // and getting requiremnts to feed each child
+      // running the operations as we aren't sure is bad
+
+      // get the service node{object} and its details such as api and metadata
+      const d = this.getClientServices(serviceId, serviceType, metadata);
+
+      console.log(d);
+
+      return {
+        status: true,
+        data: {
+          status: true,
+          message: "Successfuly",
+          paymentId: "c23abd-dajh12-sfdjkfhv3",
+        },
+      };
     } catch (error) {
       console.log(error);
 
@@ -54,8 +67,8 @@ class RatNet {
       const { serviceId, serviceType, metadata } = input;
 
       return [
-        { id: "", data: "" },
-        { id: "", data: "" },
+        { status: true, data: "" },
+        { status: true, data: "" },
       ];
     } catch (error) {
       console.log(error);
@@ -72,7 +85,7 @@ class RatNet {
     try {
       const { serviceId, serviceType, metadata } = input;
 
-      return { id: "", data: "" };
+      return { status: true, data: "" };
     } catch (error) {
       console.log(error);
 
@@ -88,37 +101,55 @@ class RatNet {
   ): Promise<Node> {
     // Hardcoded Graph as a constant
     const graph: Node = {
-      id: "root",
-      label: "Root Node",
+      serviceId: "",
+      name: "initial service",
       children: [
         {
-          id: "service1",
-          label: "Service 1",
+          serviceId: "",
+          name: "Service 1",
           children: [
             {
-              id: "operation1",
-              label: "Operation 1",
+              serviceId: "",
+              name: "Operation 1",
               children: [],
+              inputsRequirements: [],
+              outputRequirements: [],
+              protocolType: "HTTPS",
             },
             {
-              id: "operation2",
-              label: "Operation 2",
+              serviceId: "",
+              name: "Operation 2",
               children: [],
+              inputsRequirements: [],
+              outputRequirements: [],
+              protocolType: "HTTPS",
             },
           ],
+          inputsRequirements: [],
+          outputRequirements: [],
+          protocolType: "HTTPS",
         },
         {
-          id: "service2",
-          label: "Service 2",
+          serviceId: "",
+          name: "Service 2",
           children: [
             {
-              id: "operation3",
-              label: "Operation 3",
+              serviceId: "",
+              name: "Operation 3",
               children: [],
+              inputsRequirements: [],
+              outputRequirements: [],
+              protocolType: "HTTPS",
             },
           ],
+          inputsRequirements: [],
+          outputRequirements: [],
+          protocolType: "HTTPS",
         },
       ],
+      inputsRequirements: [],
+      outputRequirements: [],
+      protocolType: "HTTPS",
     };
 
     // Example usage: Accessing the graph
